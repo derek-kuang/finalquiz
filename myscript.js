@@ -2,6 +2,7 @@ let questionURL = "https://opentdb.com/api.php?amount=10&difficulty="
 let apikey = 'G9AuluhuBroHJZH514Or4Rztm4FgAHX67Ao98d9qH7IDjXwh4jGTt0Qi'
 let score = 0
 let qAnswered = 0
+let gameFinished = false
 const answerArray = []
 
 document.getElementById("timer").style.display = "none"
@@ -215,7 +216,7 @@ function buttonClick(b){
 
 function finishGame(score){
     document.getElementById("main").innerHTML = "Your score: " + score
-    document.getElementById("timer").style.display = "none"
+    gameFinished = true
 }
 
 //https://www.freecodecamp.org/news/how-to-create-a-countdown-timer/
@@ -229,11 +230,16 @@ function timer(seconds) {
     console.log(counter);
     counter--;
 
+    if(gameFinished == true){
+      document.getElementById("timer").style.display = "none"
+      clearInterval(interval);
+    }
+
     if(counter < 10){
       document.getElementById("timer").style.backgroundColor = "red"
     }
 
-    if (counter < 0) {
+    if (counter < 0 && gameFinished == false) {
       clearInterval(interval);
       document.getElementById("main").innerHTML = "Out of time!"
       document.getElementById("timer").style.display = "none"
