@@ -5,7 +5,6 @@ let qAnswered = 0
 let gameFinished = false
 const answerArray = []
 
-document.getElementById("timer").style.display = "none"
 
 // load the service worker
 if ('serviceWorker' in navigator) {
