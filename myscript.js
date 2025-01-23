@@ -44,7 +44,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 
 async function fetchEasy(){
-    const response = await fetch(questionURL) + "easy" + "&type=multiple"
+    const response = await fetch(questionURL + "easy" + "&type=multiple")
     const data = await response.json()
     console.log(data)
     for(var b = 0; b < data.results.length; b++){
@@ -68,7 +68,7 @@ async function fetchEasy(){
 
 
 async function fetchMedium(){
-    const response = await fetch(questionURL + "medium" + "&type=multiple"
+    const response = await fetch(questionURL + "medium" + "&type=multiple")
     const data = await response.json()
     console.log(data)
     for(var b = 0; b < data.results.length; b++){
@@ -86,7 +86,7 @@ async function fetchMedium(){
 
 
 async function fetchHard(){
-    const response = await fetch(questionURL + "hard" + "&type=multiple"
+    const response = await fetch(questionURL + "hard" + "&type=multiple")
     const data = await response.json()
     console.log(data)
     
