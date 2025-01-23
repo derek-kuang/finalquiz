@@ -44,7 +44,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 
 async function fetchEasy(){
-    const response = await fetch(questionURL) + "easy" + "&type=multiple)
+    const response = await fetch(questionURL) + "easy" + "&type=multiple"
     const data = await response.json()
     console.log(data)
     for(var b = 0; b < data.results.length; b++){
