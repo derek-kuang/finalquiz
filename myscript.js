@@ -1,4 +1,4 @@
-let questionURL = "https://opentdb.com/api.php?amount=10&difficulty="
+let questionURL = "questions.json"//"https://opentdb.com/api.php?amount=10&difficulty="
 let apikey = 'G9AuluhuBroHJZH514Or4Rztm4FgAHX67Ao98d9qH7IDjXwh4jGTt0Qi'
 let score = 0
 let qAnswered = 0
@@ -44,7 +44,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 
 async function fetchEasy(){
-    const response = await fetch(questionURL + "easy" + "&type=multiple")
+    const response = await fetch(questionURL) //+ "easy")
     const data = await response.json()
     console.log(data)
     for(var b = 0; b < data.results.length; b++){
@@ -68,7 +68,7 @@ async function fetchEasy(){
 
 
 async function fetchMedium(){
-    const response = await fetch(questionURL + "medium" + "&type=multiple")
+    const response = await fetch(questionURL + "medium")
     const data = await response.json()
     console.log(data)
     for(var b = 0; b < data.results.length; b++){
@@ -86,7 +86,7 @@ async function fetchMedium(){
 
 
 async function fetchHard(){
-    const response = await fetch(questionURL + "hard" + "&type=multiple")
+    const response = await fetch(questionURL + "hard")
     const data = await response.json()
     console.log(data)
     
@@ -112,6 +112,8 @@ async function showQuestions(data){
     document.getElementById("main").innerHTML = ""
     console.log("data")
     console.log(data)
+
+    document.getElementById("footer").style.display = "block"
 
 
     for(var l = 0; l < data.results.length; l++){
@@ -214,6 +216,7 @@ function buttonClick(b){
 //end
 
 function finishGame(score){
+    document.getElementById("footer").style.display = "none"
     document.getElementById("main").innerHTML = "Your score: " + score
     gameFinished = true
 }
@@ -240,6 +243,7 @@ function timer(seconds) {
 
     if (counter < 0 && gameFinished == false) {
       clearInterval(interval);
+      document.getElementById("footer").style.display = "none"
       document.getElementById("main").innerHTML = "Out of time!"
       document.getElementById("timer").style.display = "none"
     }
