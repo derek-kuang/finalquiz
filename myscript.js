@@ -1,8 +1,10 @@
-let questionURL =  "questions.json" //"https://opentdb.com/api.php?amount=10&difficulty="
+let questionURL = "questions.json"//"https://opentdb.com/api.php?amount=10&difficulty="
 let apikey = 'G9AuluhuBroHJZH514Or4Rztm4FgAHX67Ao98d9qH7IDjXwh4jGTt0Qi'
 let score = 0
+let qAnswered = 0
 const answerArray = []
 
+document.getElementById("timer").style.display = "none"
 
 // load the service worker
 if ('serviceWorker' in navigator) {
@@ -54,6 +56,7 @@ async function fetchEasy(){
         showQuestions(data)
 
     document.getElementById("buttons").style.display = "none";
+    timer(15)
 
 }
 
@@ -77,6 +80,7 @@ async function fetchMedium(){
         showQuestions(data)
 
         document.getElementById("buttons").style.display = "none";
+        timer(45)
 
 }
 
@@ -96,6 +100,7 @@ async function fetchHard(){
     await showQuestions(data)
 
     document.getElementById("buttons").style.display = "none";
+    timer(30)
 
 
 }
@@ -135,8 +140,8 @@ async function showQuestions(data){
         elemQuestion.innerHTML += data.results[num].question + '<br> <br>' 
         for(var s = 0; s < shuffle.length; s++){
             var elemButton = document.createElement("button")
-            elemButton.id = "answers"
-            elemButton.innerText += shuffle[s]
+            elemButton.classList = "answers" + a
+            elemButton.innerHTML += shuffle[s]
             document.getElementById("main").appendChild(elemButton)
             elemButton.addEventListener("click", (b) => buttonClick(b ))
                    
@@ -184,13 +189,54 @@ async function fetchImage(query, b){
 
 function buttonClick(b){
     let selectedButton = b.target
+    let elemClass = selectedButton.classList
+    console.log(elemClass.value)
+    document.getElementsByClassName(elemClass.value)[0].style.display = "none"
+    document.getElementsByClassName(elemClass.value)[1].style.display = "none"
+    document.getElementsByClassName(elemClass.value)[2].style.display = "none"
+    document.getElementsByClassName(elemClass.value)[3].style.display = "none"
+    qAnswered++
+    console.log(qAnswered)
+    
     //https://www.freecodecamp.org/news/check-if-an-item-is-in-an-array-in-javascript-js-contains-with-array-includes/#:~:text=You%20can%20use%20the%20includes,the%20item%20doesn't%20exist.
     if(answerArray.includes(selectedButton.innerText)){
         score++
+        //end
     }
-    //end
     console.log(selectedButton.innerText)
     console.log(score)
+
+    if(qAnswered == 10){
+        finishGame(score)
+    }
 }
 
 //end
+
+function finishGame(score){
+    document.getElementById("main").innerHTML = "Your score: " + score
+    document.getElementById("timer").style.display = "none"
+}
+
+//https://www.freecodecamp.org/news/how-to-create-a-countdown-timer/
+
+function timer(seconds) {
+  let counter = seconds;
+
+  const interval = setInterval(() => {
+    document.getElementById("timer").style.display = "block"
+    document.getElementById("timer").innerHTML = counter
+    console.log(counter);
+    counter--;
+
+    if(counter < 10){
+      document.getElementById("timer").style.backgroundColor = "red"
+    }
+
+    if (counter < 0) {
+      clearInterval(interval);
+      document.getElementById("main").innerHTML = "Out of time!"
+      document.getElementById("timer").style.display = "none"
+    }
+  }, 1000);
+}
