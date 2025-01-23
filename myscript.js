@@ -1,4 +1,4 @@
-let questionURL = "questions.json"//"https://opentdb.com/api.php?amount=10&difficulty="
+let questionURL = "https://opentdb.com/api.php?amount=10&difficulty="
 let apikey = 'G9AuluhuBroHJZH514Or4Rztm4FgAHX67Ao98d9qH7IDjXwh4jGTt0Qi'
 let score = 0
 let qAnswered = 0
