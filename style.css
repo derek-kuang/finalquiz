@@ -63,6 +63,20 @@ img{
     margin-bottom: 10px;
 }
 
+#footer{
+    text-align: center;
+    padding: 30px;
+}
+
+#footer a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+#footer a:hover{
+    color: blue;
+}
 
 @media (max-width: 700px) {
     #main{
