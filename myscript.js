@@ -110,6 +110,7 @@ async function fetchHard(){
 
 async function showQuestions(data){
     document.getElementById("main").innerHTML = ""
+    document.getElementById("main").style.display = "block"
     console.log("data")
     console.log(data)
 
@@ -218,6 +219,7 @@ function buttonClick(b){
 function finishGame(score){
     document.getElementById("footer").style.display = "none"
     document.getElementById("main").innerHTML = "Your score: " + score
+    document.getElementById("main").innerHTML += "<br>" + "Thanks for playing!"
     gameFinished = true
 }
 
