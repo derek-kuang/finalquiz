@@ -80,7 +80,7 @@ async function fetchMedium(){
         showQuestions(data)
 
         document.getElementById("buttons").style.display = "none";
-        timer(50)
+        timer(55)
 
 }
 
