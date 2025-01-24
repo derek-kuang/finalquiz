@@ -80,7 +80,7 @@ async function fetchMedium(){
         showQuestions(data)
 
         document.getElementById("buttons").style.display = "none";
-        timer(45)
+        timer(50)
 
 }
 
@@ -100,7 +100,7 @@ async function fetchHard(){
     await showQuestions(data)
 
     document.getElementById("buttons").style.display = "none";
-    timer(30)
+    timer(40)
 
 
 }
