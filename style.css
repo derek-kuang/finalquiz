@@ -17,10 +17,10 @@ body{
     font-size: 60px;
     font-family: "Atkinson Hyperlegible", serif;
     font-weight: bold;
-    color: #27afe8;
 }
 
 #title a{
+    color: #27afe8;
     text-decoration: none;
 } 
 
