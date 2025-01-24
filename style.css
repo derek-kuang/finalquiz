@@ -9,6 +9,7 @@ body{
     padding: 5px;
     font-size: 35px;
     text-align: center;
+    display: none;
 }
 
 #title{
@@ -18,7 +19,7 @@ body{
 h1 a{
     font-family: "Atkinson Hyperlegible", serif;
     font-weight: bold;
-    color: blue;
+    color: #27afe8;
     text-decoration: none;
     font-size: 45px;
 }
@@ -37,7 +38,7 @@ h1 a:hover{
 }
 
 button{
-    color: blue;
+    color: #27afe8;
     width: auto;
     height: 50px;;
     background-color: white;
@@ -46,7 +47,7 @@ button{
 
 button:hover{
     color: white;
-    background-color: blue;
+    background-color: #27afe8;
 }
 
 img{
@@ -56,6 +57,7 @@ img{
 
 
 #timer{
+    display: none;
     position: sticky;
     top: 0;
     width: 520px;
@@ -69,6 +71,7 @@ img{
 }
 
 #footer{
+    display: none;
     text-align: center;
     padding: 30px;
 }
@@ -80,7 +83,7 @@ img{
 }
 
 #footer a:hover{
-    color: blue;
+    color: #27afe8;
 }
 
 @media (max-width: 700px) {
