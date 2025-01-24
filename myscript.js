@@ -218,7 +218,7 @@ function finishGame(score){
     gameFinished = true
 }
 
-//https://www.freecodecamp.org/news/how-to-create-a-countdown-timer/ + edits of my own
+//https://www.freecodecamp.org/news/how-to-create-a-countdown-timer/ for base timer code + edits of my own
 
 function timer(seconds) {
   let counter = seconds;
