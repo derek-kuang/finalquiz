@@ -44,6 +44,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 
 async function fetchEasy(){
+    try{
     const response = await fetch(questionURL + "easy" + "&type=multiple")
     const data = await response.json()
     for(var b = 0; b < data.results.length; b++){
@@ -55,6 +56,9 @@ async function fetchEasy(){
 
     document.getElementById("buttons").style.display = "none";
     timer(75)
+      }catch{
+        alert("Fetch failed, try again in 5 seconds")
+      }
 
 }
 
@@ -66,6 +70,7 @@ async function fetchEasy(){
 
 
 async function fetchMedium(){
+  try{
     const response = await fetch(questionURL + "medium" + "&type=multiple")
     const data = await response.json()
     for(var b = 0; b < data.results.length; b++){
@@ -77,11 +82,15 @@ async function fetchMedium(){
 
         document.getElementById("buttons").style.display = "none";
         timer(55)
+      }catch{
+        alert("Fetch failed, try again in 5 seconds")
+      }
 
 }
 
 
 async function fetchHard(){
+  try{
     const response = await fetch(questionURL + "hard" + "&type=multiple") 
     const data = await response.json()
     
@@ -95,7 +104,9 @@ async function fetchHard(){
 
     document.getElementById("buttons").style.display = "none";
     timer(40)
-
+  }catch{
+    alert("Fetch failed, try again in 5 seconds")
+  }
 
 }
 
@@ -234,4 +245,3 @@ function timer(seconds) {
     }
   }, 1000);
 }
-
