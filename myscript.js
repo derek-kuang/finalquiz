@@ -56,7 +56,7 @@ async function fetchEasy(){
         showQuestions(data)
 
     document.getElementById("buttons").style.display = "none";
-    timer(60)
+    timer(75)
 
 }
 
