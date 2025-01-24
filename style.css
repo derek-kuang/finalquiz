@@ -32,6 +32,10 @@ h1 a:hover{
     text-align: center;
 }
 
+#installButton{
+    text-align: center;
+}
+
 button{
     color: blue;
     width: auto;
