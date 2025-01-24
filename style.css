@@ -41,7 +41,7 @@ button{
     width: auto;
     height: 50px;;
     background-color: white;
-    margin: 3px;
+    margin: 1px;
 }
 
 button:hover{
