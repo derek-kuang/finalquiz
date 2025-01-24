@@ -46,10 +46,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
 async function fetchEasy(){
     const response = await fetch(questionURL + "easy" + "&type=multiple")
     const data = await response.json()
-    console.log(data)
     for(var b = 0; b < data.results.length; b++){
         var query = data.results[b].correct_answer //+ "  " + data.results[b].category
-        console.log(query)
         fetchImage(query, b)
         }
     
@@ -70,10 +68,8 @@ async function fetchEasy(){
 async function fetchMedium(){
     const response = await fetch(questionURL + "medium" + "&type=multiple")
     const data = await response.json()
-    console.log(data)
     for(var b = 0; b < data.results.length; b++){
         var query = data.results[b].correct_answer //+ "  " + data.results[b].category
-        console.log(query)
         fetchImage(query, b)
         }
     
@@ -88,11 +84,9 @@ async function fetchMedium(){
 async function fetchHard(){
     const response = await fetch(questionURL + "hard" + "&type=multiple") 
     const data = await response.json()
-    console.log(data)
     
     for(var b = 0; b < data.results.length; b++){
     var query = data.results[b].correct_answer //+ "  " + data.results[b].category
-    console.log(query)
     await fetchImage(query, b)
     
     }
@@ -111,8 +105,6 @@ async function fetchHard(){
 async function showQuestions(data){
     document.getElementById("main").innerHTML = ""
     document.getElementById("main").style.display = "block"
-    console.log("data")
-    console.log(data)
 
     document.getElementById("footer").style.display = "block"
 
@@ -121,7 +113,6 @@ async function showQuestions(data){
         answerArray.push(data.results[l].correct_answer)
     }
 
-    console.log(answerArray)
 
     let num = 0
     for(var a = 0; a < data.results.length; a++){
@@ -139,7 +130,6 @@ async function showQuestions(data){
 
         //end
 
-        console.log(shuffle)
         elemQuestion.innerHTML += data.results[num].question + '<br> <br>' 
         for(var s = 0; s < shuffle.length; s++){
             var elemButton = document.createElement("button")
@@ -179,8 +169,6 @@ async function fetchImage(query, b){
         return resp.json()
       })
       .then(data => {
-        console.log("data")
-        console.log(data)
         document.getElementById("q"+ b).innerHTML += '<img src=' + data.photos[0].src.medium + '>  '
         
       })
@@ -193,21 +181,17 @@ async function fetchImage(query, b){
 function buttonClick(b){
     let selectedButton = b.target
     let elemClass = selectedButton.classList
-    console.log(elemClass.value)
     document.getElementsByClassName(elemClass.value)[0].style.display = "none"
     document.getElementsByClassName(elemClass.value)[1].style.display = "none"
     document.getElementsByClassName(elemClass.value)[2].style.display = "none"
     document.getElementsByClassName(elemClass.value)[3].style.display = "none"
     qAnswered++
-    console.log(qAnswered)
     
     //https://www.freecodecamp.org/news/check-if-an-item-is-in-an-array-in-javascript-js-contains-with-array-includes/#:~:text=You%20can%20use%20the%20includes,the%20item%20doesn't%20exist.
     if(answerArray.includes(selectedButton.innerText)){
         score++
         //end
     }
-    console.log(selectedButton.innerText)
-    console.log(score)
 
     if(qAnswered == 10){
         finishGame(score)
@@ -231,7 +215,6 @@ function timer(seconds) {
   const interval = setInterval(() => {
     document.getElementById("timer").style.display = "block"
     document.getElementById("timer").innerHTML = counter
-    console.log(counter);
     counter--;
 
     if(gameFinished == true){
