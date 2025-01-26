@@ -45,6 +45,17 @@ button{
     margin: 1px;
 }
 
+#selector{
+    height: 50px;
+    font-size: 15px;
+    color:#27afe8;
+    font-family: "Atkinson Hyperlegible", serif;
+}
+
+.fetch{
+    display: none;
+}
+
 button:hover{
     color: white;
     background-color: #27afe8;
