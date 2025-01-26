@@ -3,6 +3,7 @@ let apikey = 'G9AuluhuBroHJZH514Or4Rztm4FgAHX67Ao98d9qH7IDjXwh4jGTt0Qi'
 let score = 0
 let qAnswered = 0
 let gameFinished = false
+const fetchArr = []
 const answerArray = []
 
 
@@ -43,10 +44,41 @@ window.addEventListener('beforeinstallprompt', (e) => {
 }); 
 
 
-async function fetchEasy(){
-    try{
-    const response = await fetch(questionURL + "easy" + "&type=multiple")
+function selectCategory(){
+  let category = document.getElementById("selector").value
+  fetchArr.push(category)
+  console.log(category)
+  document.getElementById("selector").style.display = "none"
+  document.getElementsByClassName("fetch")[0].style.display = "inline"
+  document.getElementsByClassName("fetch")[1].style.display = "inline"
+  document.getElementsByClassName("fetch")[2].style.display = "inline"
+}
+
+
+
+function fetchEasy(){
+    fetchArr.push("easy")
+    fetchQuestions()
+}
+
+async function fetchMedium(){
+  fetchArr.push("medium")
+  fetchQuestions()
+}
+
+
+async function fetchHard(){
+  fetchArr.push("hard")
+  fetchQuestions()
+
+}
+
+async function fetchQuestions(){
+  console.log(fetchArr)
+  try{
+    const response = await fetch(questionURL + "&category=" + fetchArr[0] + "&difficulty=" + fetchArr[1] + "&type=multiple")
     const data = await response.json()
+    console.log(data)
     for(var b = 0; b < data.results.length; b++){
         var query = data.results[b].correct_answer //+ "  " + data.results[b].category
         fetchImage(query, b)
@@ -57,60 +89,9 @@ async function fetchEasy(){
     document.getElementById("buttons").style.display = "none";
     timer(75)
       }catch{
-        alert("Fetch failed, try again in 5 seconds")
+        alert("Fetch failed, check your internet connection or try again in 5 seconds")
       }
-
 }
-
-
-
-
-
-
-
-
-async function fetchMedium(){
-  try{
-    const response = await fetch(questionURL + "medium" + "&type=multiple")
-    const data = await response.json()
-    for(var b = 0; b < data.results.length; b++){
-        var query = data.results[b].correct_answer //+ "  " + data.results[b].category
-        fetchImage(query, b)
-        }
-    
-        showQuestions(data)
-
-        document.getElementById("buttons").style.display = "none";
-        timer(55)
-      }catch{
-        alert("Fetch failed, try again in 5 seconds")
-      }
-
-}
-
-
-async function fetchHard(){
-  try{
-    const response = await fetch(questionURL + "hard" + "&type=multiple") 
-    const data = await response.json()
-    
-    for(var b = 0; b < data.results.length; b++){
-    var query = data.results[b].correct_answer //+ "  " + data.results[b].category
-    await fetchImage(query, b)
-    
-    }
-
-    await showQuestions(data)
-
-    document.getElementById("buttons").style.display = "none";
-    timer(40)
-  }catch{
-    alert("Fetch failed, try again in 5 seconds")
-  }
-
-}
-
-
 
 
 async function showQuestions(data){
