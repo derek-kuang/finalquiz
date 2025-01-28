@@ -181,8 +181,14 @@ function buttonClick(b){
     
     //https://www.freecodecamp.org/news/check-if-an-item-is-in-an-array-in-javascript-js-contains-with-array-includes/#:~:text=You%20can%20use%20the%20includes,the%20item%20doesn't%20exist.
     if(answerArray.includes(selectedButton.innerText)){
+        //https://stackoverflow.com/questions/12953928/immediate-play-sound-on-button-click-in-html-page
+        var correct = new Audio("correct.mp3")
+        correct.play()
         score++
         //end
+    }else{
+        var incorrect = new Audio("incorrect.mp3")
+        incorrect.play()
     }
 
     if(qAnswered == 10){
